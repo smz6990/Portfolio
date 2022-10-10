@@ -1,10 +1,9 @@
 from django.urls import path
-from .views import *
+from . import views
 
 app_name = 'website'
 
 urlpatterns = [
-    path('',index_view,name='index'),
-    
-    
+    path('', views.IndexView.as_view(), name='index'),
+    path("contact", views.ContactFormView.as_view(), name="contact-form")
 ]

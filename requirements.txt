@@ -1,7 +1,11 @@
 Django==3.2.14
 asgiref
-gunicorn
 install
 pytz
 sqlparse
-whitenoise
+python-decouple
+django-simple-captcha
+django-multi-captcha-admin
+django-simple-math-captcha==1.1.0
+django-robots
+mysqlclient
