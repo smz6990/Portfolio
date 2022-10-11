@@ -5,5 +5,6 @@ app_name = 'website'
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path("contact", views.ContactFormView.as_view(), name="contact-form")
+    path("contact/", views.ContactFormView.as_view(), name="contact-form"),
+    path("resume.pdf", views.resume_download, name="resume")
 ]

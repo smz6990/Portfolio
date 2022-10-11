@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default=True)
+SECRET_KEY = config('SECRET_KEY', default="test")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
@@ -32,7 +32,6 @@ ALLOWED_HOSTS = config(
     cast=lambda v: [s.strip() for s in v.split(",")],
     default="*",
 )
-
 
 
 # Application definition
@@ -69,7 +68,7 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -177,22 +176,23 @@ MESSAGE_TAGS = {
 # security configs for production
 if config("USE_SSL_CONFIG", cast=bool, default=False):
     # Https settings
-    # SESSION_COOKIE_SECURE = True
-    # CSRF_COOKIE_SECURE = True
-    # SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
 
     # # HSTS settings
-    # SECURE_HSTS_SECONDS = 31536000  # 1 year
-    # SECURE_HSTS_PRELOAD = True
-    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
     # # more security settings
     SECURE_CONTENT_TYPE_NOSNIFF = True
-    # SECURE_BROWSER_XSS_FILTER = True
-    # X_FRAME_OPTIONS = "SAMEORIGIN"
-    # SECURE_REFERRER_POLICY = "strict-origin"
-    # USE_X_FORWARDED_HOST = True
-    # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_BROWSER_XSS_FILTER = True
+    X_FRAME_OPTIONS = "SAMEORIGIN"
+    SECURE_REFERRER_POLICY = "strict-origin"
+    USE_X_FORWARDED_HOST = True
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 
 LOGGING = {
     "version": 1,

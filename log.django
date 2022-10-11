@@ -223,3 +223,47 @@ WARNING 2022-10-10 16:27:28,874 django.server.log_message:161- "GET /static/vend
 WARNING 2022-10-10 16:27:29,175 django.server.log_message:161- "GET /static/vendor/swiper/swiper-bundle.min.js.map HTTP/1.1" 404 1974
 WARNING 2022-10-10 17:05:47,867 django.request.log_response:224- Not Found: /favicon.ico
 WARNING 2022-10-10 17:05:47,868 django.server.log_message:161- "GET /favicon.ico HTTP/1.1" 404 2920
+ERROR 2022-10-10 19:47:49,778 django.request.log_response:224- Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\template\defaulttags.py", line 449, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'url' not found. 'url' is not a valid view function or pattern name.
+ERROR 2022-10-10 19:47:49,811 django.server.log_message:161- "GET / HTTP/1.1" 500 129493
+WARNING 2022-10-10 19:47:51,811 django.request.log_response:224- Not Found: /favicon.ico
+WARNING 2022-10-10 19:47:51,813 django.server.log_message:161- "GET /favicon.ico HTTP/1.1" 404 3093
+ERROR 2022-10-10 19:48:14,098 django.request.log_response:224- Internal Server Error: /resume.pdf
+Traceback (most recent call last):
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\website\views.py", line 43, in resume_download
+    file = FileResponse(open_file=fs.open('resume.pdf', 'rb'),
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\http\response.py", line 442, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\saleh\Documents\GitHub\Portfolio\venv\lib\site-packages\django\http\response.py", line 400, in __init__
+    super().__init__(*args, **kwargs)
+TypeError: HttpResponseBase.__init__() got an unexpected keyword argument 'open_file'
+ERROR 2022-10-10 19:48:14,104 django.server.log_message:161- "GET /resume.pdf HTTP/1.1" 500 77875

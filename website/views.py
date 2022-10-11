@@ -1,6 +1,8 @@
 from django.views.generic import TemplateView, CreateView
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.http import FileResponse
+from django.core.files.storage import FileSystemStorage
 
 from .forms import ContactForm
 
@@ -34,3 +36,12 @@ class ContactFormView(CreateView):
             messages.success(self.request, "فرم به درستی ثبت شد")
             form.save()
         return super().form_valid(form)
+
+
+def resume_download(request):
+    fs = FileSystemStorage('media/resume/')
+    file = FileResponse(fs.open('resume.pdf', 'rb'),
+                        content_type='application/force-download',
+                        as_attachment=True,
+                        filename="resume.pdf")
+    return file
